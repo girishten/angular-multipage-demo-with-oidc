@@ -1,6 +1,6 @@
 {
   "name": "angular-multipage-demo-with-oidc",
-  "version": "0.0.0",
+  "version": "12.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --ssl=false  --port=4200 --proxy-config proxy/local.config.json --open",
@@ -12,9 +12,12 @@
     "build:int": "ng build --prod --configuration=int",
     "build:prod": "ng build --prod",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "code-format": "npx prettier --write \"src/**/*.{ts,html,md,scss,json}\" ",
+    "code-format:test": "npx prettier --check \"src/**/*.{ts,html,md,scss,json}\" "
   },
   "private": true,
+  "license": "MIT",
   "dependencies": {
     "@angular/animations": "~12.2.0",
     "@angular/common": "~12.2.0",
@@ -24,6 +27,9 @@
     "@angular/platform-browser": "~12.2.0",
     "@angular/platform-browser-dynamic": "~12.2.0",
     "@angular/router": "~12.2.0",
+    "angular-oauth2-oidc": "^12.1.0",
+    "bootstrap": "^5.1.2",
+    "bootstrap-icons": "^1.5.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
