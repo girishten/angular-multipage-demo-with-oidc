@@ -3,8 +3,14 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --ssl=false  --port=4200 --proxy-config proxy/local.config.json --open",
+    "start:dev": "ng serve --ssl=true  --port=4200 --proxy-config proxy/dev.config.json --open",
+    "start:int": "ng serve --ssl=true  --port=4200 --proxy-config proxy/int.config.json --open",
+    "start:prod": "ng serve --ssl=true  --port=4200 --proxy-config proxy/prod.config.json --open",
     "build": "ng build",
+    "build:dev": "ng build --prod --configuration=dev",
+    "build:int": "ng build --prod --configuration=int",
+    "build:prod": "ng build --prod",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },

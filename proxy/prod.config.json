@@ -1,0 +1,10 @@
+{
+  "/api": {
+    "target": "https://domain.tld/api/version-number/",
+    "secure": false,
+    "pathRewrite": {
+      "^/api": ""
+    },
+    "changeOrigin": true
+  }
+}
