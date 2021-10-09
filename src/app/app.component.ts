@@ -10,7 +10,7 @@ import { ERROR_ROUTES } from './core/config/error.route.conf';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'Angular Multipage Demo with OAuth2.0 OIDC';
+  title = 'Angular Multi Page Demo with OAuth2.0 OIDC';
 
   isAuthenticated: Observable<boolean>;
   isDoneLoading: Observable<boolean>;

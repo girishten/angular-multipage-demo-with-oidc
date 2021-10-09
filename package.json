@@ -1,6 +1,13 @@
 {
   "name": "angular-multipage-demo-with-oidc",
   "version": "12.0.0",
+  "description": "Angular Dashboard Application with OAuth 2.0 OIDC, Public & Private Master Routes and Some Other Helpers.",
+  "repository": "https://github.com/girishten/angular-multipage-demo-with-oidc.git",
+  "author": "Girish S <girishten@live.com>",
+  "license": "MIT",
+  "engines": {
+    "node": ">=14.0.0"
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve --ssl=false  --port=4200 --proxy-config proxy/local.config.json --open",
@@ -17,7 +24,14 @@
     "code-format:test": "npx prettier --check \"src/**/*.{ts,html,md,scss,json}\" "
   },
   "private": true,
-  "license": "MIT",
+  "keywords": [
+  "Angular",
+  "Dashboard",
+  "OAuth 2.0",
+  "OIDC",
+  "Multiple Master Page",
+  "Architechure"
+],
   "dependencies": {
     "@angular/animations": "~12.2.0",
     "@angular/common": "~12.2.0",

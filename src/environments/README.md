@@ -1,8 +1,13 @@
 # Build Environments
 
-Build Environments are intended to build for different environments.
+Build Environments are intended to build for different environments. [Official Documentation](https://angular.io/guide/build).
 
-    Provided Build Environments added are:
+It is best if you follow the below pattern.
+
+    Anything That is Common for across application - Add it to appropriate config file or create new one if needed.
+    Anything That is Common But value changes according to the environment - Add it to appropriate environment file.
+
+Provided Build Environments added are:
 
     environment.ts - Uses while running angular locally.
     Dev - Intended to build for DEV Server Environment.
@@ -10,4 +15,5 @@ Build Environments are intended to build for different environments.
     Prod - Intended to build for Production Setup.
 
 PS: Build environments are supposed to supply config according to intended server environment while building.
-And this is different from environments you can find in proxy config.
+And this usage different from environments you can find in proxy config.
+

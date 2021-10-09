@@ -35,6 +35,7 @@ export function storageFactory(): OAuthStorage {
 
 @NgModule({
   declarations: [
+    // Public
     LoginComponent,
     LogoutComponent,
     PublicHomeComponent,
@@ -44,6 +45,8 @@ export function storageFactory(): OAuthStorage {
     P403Component,
     P401Component,
     E500Component,
+
+    // Private
     PrivateHomeComponent,
     PrivateNavbarComponent,
     PrivateFooterComponent,
