@@ -12,7 +12,7 @@ If you would like to dig more read [NodeJs Custom Run Scripts](https://docs.npmj
 
 Run `npm run start:local` for a dev server with proxy to local API Service. Or Run `npm run start:dev` for a dev server with dev hosted API Service.
 
-If you are running `npm run start:local`, This has an assumption that you have already mapped local api path in `proxy-config/local.config.json`. You may need to restart angular server when ever you making a change to proxy configuration.
+If you are running `npm run start:local`, This has an assumption that you have already mapped local api path in `proxy-config/local.config.json`. You may need to restart angular server whenever you are making a change to proxy configuration.
 
 While customizing `proxy-config` follow the instructions from [proxying to backend server](https://angular.io/guide/build#proxying-to-a-backend-server) from Angular's Documentation.
 
@@ -50,7 +50,7 @@ You can take advantage of [Nodejs custom script](https://docs.npmjs.com/cli/run-
 Angular application can be deployed to domain|sub-domain|sub-folder.
 For this demo, there is an assumption that API service is available via `base-url/api`.
 
-example: if `https://domain.tld` is Angular App and `https://domain.tld/api/v1-21/products/9634/reviews?sort=date&order=desc` can be a API URI.
+example: if `https://domain.tld` is Angular App and `https://domain.tld/api/v1-21/products/9634/reviews?sort=date&order=desc` can be an API URI.
 
 ## Running unit tests
 
