@@ -1,11 +1,11 @@
-import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
-import { OAuthService } from 'angular-oauth2-oidc';
-import { BehaviorSubject, combineLatest, Observable, ReplaySubject } from 'rxjs';
-import { filter, map } from 'rxjs/operators';
-import { AUTH_ROUTES } from '../../config/auth.route.conf';
-import { IdentityClaims } from '../../models/identity-claims';
-import { ExtendedOAuthService } from './extended-oauth.service';
+import {Injectable} from '@angular/core';
+import {Router} from '@angular/router';
+import {BehaviorSubject, combineLatest, Observable, ReplaySubject} from 'rxjs';
+import {filter, map} from 'rxjs/operators';
+import {AUTH_ROUTES} from '../../config/auth.route.conf';
+import {IdentityClaims} from '../../models/identity-claims';
+import {ExtendedOAuthService} from './extended-oauth.service';
+import {ERROR_ROUTES} from "../../config/error.route.conf";
 
 /**
  * Based on: https://github.com/jeroenheijmans/sample-angular-oauth2-oidc-with-auth-guards/
@@ -23,6 +23,8 @@ export class AuthService {
   private isDoneLoadingSubject$ = new ReplaySubject<boolean>();
   public isDoneLoading$ = this.isDoneLoadingSubject$.asObservable();
 
+  private sessionErrorBlocker = false;
+
   /**
    * Publishes `true` if and only if
    * (a) all the asynchronous initial login calls have completed or errored, and
@@ -38,7 +40,8 @@ export class AuthService {
   );
 
   private navigateToLoginPage(): void {
-    this.router.navigateByUrl('/' + AUTH_ROUTES.login).then(() => {});
+    this.router.navigateByUrl('/' + AUTH_ROUTES.login).then(() => {
+    });
   }
 
   constructor(private oauthService: ExtendedOAuthService, private router: Router) {
@@ -56,10 +59,30 @@ export class AuthService {
       this.isAuthenticatedSubject$.next(this.oauthService.hasValidAccessToken());
     });
 
-    this.oauthService.events.pipe(filter((e) => ['token_received'].includes(e.type))).subscribe((e) => this.oauthService.loadUserProfile());
+    // Login Errors
+    const IRRECOVERABLE_ERRORS = [
+      'jwks_load_error',
+      'discovery_document_load_error',
+      'discovery_document_validation_error'
+    ];
+    this.oauthService.events
+      .pipe(filter((e) => IRRECOVERABLE_ERRORS.includes(e.type)))
+      .subscribe((e) => this.router.navigate([`/${ERROR_ROUTES.e500}`]));
 
+    // User Profile Error
+    this.oauthService.events
+      .pipe(filter((e) => ['user_profile_load_error'].includes(e.type)))
+      .subscribe((e) => this.router.navigate([`/${ERROR_ROUTES.p401}`]));
+
+    // Token Received
+    this.oauthService.events
+      .pipe(filter((e) => ['token_received'].includes(e.type)))
+      .subscribe((e) => this.oauthService.loadUserProfile());
+
+    // Session Error
     this.oauthService.events
       .pipe(filter((e) => ['session_terminated', 'session_error'].includes(e.type)))
+      .pipe(filter(() => !this.sessionErrorBlocker))
       .subscribe((e) => this.navigateToLoginPage());
 
     this.oauthService.setupAutomaticSilentRefresh();
@@ -122,7 +145,8 @@ export class AuthService {
             if (!stateUrl.startsWith('/')) {
               stateUrl = decodeURIComponent(stateUrl);
             }
-            this.router.navigateByUrl(stateUrl).then(() => {});
+            this.router.navigateByUrl(stateUrl).then(() => {
+            });
           }
         })
         .catch(() => this.isDoneLoadingSubject$.next(true))
@@ -130,10 +154,12 @@ export class AuthService {
   }
 
   public login(targetUrl?: string): void {
+    this.sessionErrorBlocker = false;
     this.oauthService.initLoginFlow(targetUrl || this.router.url);
   }
 
   public async logout(): Promise<void> {
+    this.sessionErrorBlocker = true;
     await this.oauthService
       .revokeTokenAndLogout(
         {
@@ -142,7 +168,8 @@ export class AuthService {
         },
         true
       )
-      .then(() => {});
+      .then(() => {
+      });
   }
 
   public get identityClaims(): IdentityClaims {
@@ -150,7 +177,8 @@ export class AuthService {
   }
 
   public refresh(): void {
-    this.oauthService.silentRefresh().then(() => {});
+    this.oauthService.silentRefresh().then(() => {
+    });
   }
 
   public hasValidToken(): boolean {
