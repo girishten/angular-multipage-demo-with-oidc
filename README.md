@@ -2,6 +2,14 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.9.
 
+###### Warning
+
+If you came here looking for older version of the same, I have archived it. Going forward I will be creating newer
+angular projects when a newer angular versions are released. Main Branch will always be pointing to the latest angular
+version. While older versions will be branched out from main branch with Angular version as name. As said there will
+not be any upgrade to the existing project other than bugfixes. If anyone would like to collaborate, please keep in
+mind that for next version of angular we will be starting from scratch again.
+
 ## Development server
 
 There are four (for each environment) dev server commands are added to `package.json` for ease of use. If you would like
