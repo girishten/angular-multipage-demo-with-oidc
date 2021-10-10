@@ -12,5 +12,5 @@ export const PUBLIC_ROUTES: Routes = [
   { path: ERROR_ROUTES.p401, component: P401Component },
   { path: ERROR_ROUTES.p403, component: P403Component },
   { path: ERROR_ROUTES.p404, component: P404Component },
-  { path: ERROR_ROUTES.e500, component: E500Component },
+  { path: ERROR_ROUTES.e500, component: E500Component }
 ];

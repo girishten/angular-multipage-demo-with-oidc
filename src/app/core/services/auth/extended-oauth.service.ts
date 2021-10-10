@@ -5,7 +5,6 @@ import { OAuthService } from 'angular-oauth2-oidc';
   providedIn: 'root',
 })
 export class ExtendedOAuthService extends OAuthService {
-
   /**
    * @override storeAccessTokenResponse of OAuthService to include auth_data_updated event for tab sync
    * @param accessToken

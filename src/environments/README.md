@@ -16,4 +16,3 @@ Provided Build Environments added are:
 
 PS: Build environments are supposed to supply config according to intended server environment while building.
 And this usage different from environments you can find in proxy config.
-

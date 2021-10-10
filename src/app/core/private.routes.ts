@@ -10,5 +10,5 @@ export const PRIVATE_ROUTES: Routes = [
   {
     path: 'feature',
     loadChildren: () => import('../features/feature-module-demo/feature-module-demo.module').then((m) => m.FeatureModuleDemoModule),
-  },
+  }
 ];
