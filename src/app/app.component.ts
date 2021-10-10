@@ -1,8 +1,7 @@
-import { Component } from '@angular/core';
-import { Observable } from 'rxjs';
-import { AuthService } from './core/services/auth/auth.service';
-import { Router } from '@angular/router';
-import { ERROR_ROUTES } from './core/config/error.route.conf';
+import {Component} from '@angular/core';
+import {Observable} from 'rxjs';
+import {AuthService} from './core/services/auth/auth.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -21,6 +20,7 @@ export class AppComponent {
     this.isDoneLoading = this.authService.isDoneLoading$;
     this.canActivateProtectedRoutes = this.authService.canActivateProtectedRoutes$;
 
-    this.authService.runInitialLoginSequence().catch(() => this.router.navigate([`/${ERROR_ROUTES.e500}`]));
+    this.authService.runInitialLoginSequence().then(() => {
+    });
   }
 }
