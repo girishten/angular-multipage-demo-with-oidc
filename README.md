@@ -50,6 +50,13 @@ inside `environment.ts` before you can run this application. While registering y
 recommended
 to [use OAuth 2/OIDC using code flow + PKCE](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-security-topics-13).
 
+Common Mistakes while registering with OIDC Provider:
+* Register as Web App rather than SPA.
+* Incorrect callback urls. This demo requires you to add two urls for callback
+  `https://localhost:4200/login` and `https://localhost:4200/silent-refresh.html`.
+* Not adding CORS when RC Provider and Client are different.
+* Issuer mismatch due to / at the end.
+
 ## Routes
 
 Each of the below routes are Master Pages. First empty route accepts next level child by making use of `router-outlet`
