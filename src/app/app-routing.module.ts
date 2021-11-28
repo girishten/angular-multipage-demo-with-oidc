@@ -18,19 +18,19 @@ const routes: Routes = [
         path: '',
         component: PublicHomeComponent,
         data: { title: 'Public Page Layout' },
-        children: PUBLIC_ROUTES
+        children: PUBLIC_ROUTES,
       },
       {
         path: '',
         component: PrivateHomeComponent,
         data: { title: 'Private Page Layout' },
-        children: PRIVATE_ROUTES
-      }
+        children: PRIVATE_ROUTES,
+      },
     ],
   },
   { path: AUTH_ROUTES.login, component: LoginComponent },
   { path: AUTH_ROUTES.logout, component: LogoutComponent },
-  { path: '**', redirectTo: `/${ERROR_ROUTES.p404}`, pathMatch: 'full' }
+  { path: '**', redirectTo: `/${ERROR_ROUTES.p404}`, pathMatch: 'full' },
 ];
 
 @NgModule({
