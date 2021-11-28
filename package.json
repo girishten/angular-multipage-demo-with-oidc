@@ -16,7 +16,10 @@
     "start:prod": "ng serve --ssl=true  --port=4200 --proxy-config proxy/prod.config.json --open",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "code-format": "npx prettier --write \"src/**/*.{ts,html,md,scss,json}\" ",
+    "code-format:test": "npx prettier --check \"src/**/*.{ts,html,md,scss,json}\" ",
+    "gen:doc": "npx compodoc -p tsconfig.doc.json -n \"Documentation\""
   },
   "private": true,
   "keywords": [
