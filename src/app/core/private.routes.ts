@@ -7,4 +7,8 @@ import { DashboardComponent } from './private-home/dashboard/dashboard.component
 export const PRIVATE_ROUTES: Routes = [
   { path: '', redirectTo: `/${AUTH_ROUTES.login}`, pathMatch: 'full' },
   { path: homeRoute, component: DashboardComponent },
+  {
+    path: 'feature',
+    loadChildren: () => import('../features/feature-module-demo/feature-module-demo.module').then((m) => m.FeatureModuleDemoModule),
+  }
 ];
