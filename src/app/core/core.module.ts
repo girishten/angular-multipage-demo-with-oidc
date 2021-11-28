@@ -5,6 +5,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from '../app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 
+import { AuthModule } from '@auth0/auth0-angular';
+
 import { HTTP_INTERCEPTOR_PROVIDERS } from './services/interceptors';
 
 import { PublicHomeComponent } from './public-home/public-home.component';
@@ -21,6 +23,7 @@ import { PrivateHomeComponent } from './private-home/private-home.component';
 import { PrivateNavbarComponent } from './private-home/private-navbar/private-navbar.component';
 import { PrivateFooterComponent } from './private-home/private-footer/private-footer.component';
 import { DashboardComponent } from './private-home/dashboard/dashboard.component';
+import { AuthConfig } from './config/auth.conf';
 
 @NgModule({
   declarations: [
@@ -48,6 +51,9 @@ import { DashboardComponent } from './private-home/dashboard/dashboard.component
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
+
+    // Auth
+    AuthModule.forRoot(AuthConfig),
 
     // Local
   ],

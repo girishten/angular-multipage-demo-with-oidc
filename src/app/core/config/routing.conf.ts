@@ -1,5 +1,5 @@
 import { ExtraOptions } from '@angular/router';
-import { useHash } from './app.config';
+import { useHash } from './app.conf';
 
 export const ROUTING_OPTIONS: ExtraOptions = {
   // preloadingStrategy: CustomPreloadingStrategy,

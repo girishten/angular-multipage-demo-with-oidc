@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { homeRoute } from './config/app.config';
+import { homeRoute } from './config/app.conf';
 import { AUTH_ROUTES } from './config/auth.route.conf';
 
 import { DashboardComponent } from './private-home/dashboard/dashboard.component';
