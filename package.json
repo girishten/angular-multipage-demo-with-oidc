@@ -15,6 +15,8 @@
     "start:int": "ng serve --ssl=true  --port=4200 --proxy-config proxy/int.config.json --open",
     "start:prod": "ng serve --ssl=true  --port=4200 --proxy-config proxy/prod.config.json --open",
     "build": "ng build",
+    "build:dev": "ng build --prod --configuration=development",
+    "build:int": "ng build --prod --configuration=staging",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "code-format": "npx prettier --write \"src/**/*.{ts,html,md,scss,json}\" ",
