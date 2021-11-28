@@ -16,7 +16,7 @@
       <div class="navbar-nav">
         <a class="nav-link" routerLink="/home"><i class="bi bi-house"></i> Home </a>
       </div>
-      <form class="d-flex flex-fill justify-content-end">
+      <form class="d-flex flex-fill justify-content-end" *ngIf="auth.isAuthenticated$">
         <button class="btn btn-danger" type="submit" routerLink="/logout"><i class="bi bi-box-arrow-right"></i> Logout</button>
       </form>
     </div>

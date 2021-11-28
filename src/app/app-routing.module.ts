@@ -9,6 +9,7 @@ import { ROUTING_OPTIONS } from './core/config/routing.conf';
 import { AUTH_ROUTES } from './core/config/auth.route.conf';
 import { LoginComponent } from './core/public-home/login/login.component';
 import { LogoutComponent } from './core/public-home/logout/logout.component';
+import { AuthGuard } from '@auth0/auth0-angular';
 
 const routes: Routes = [
   {
@@ -22,6 +23,7 @@ const routes: Routes = [
       },
       {
         path: '',
+        canActivate: [AuthGuard],
         component: PrivateHomeComponent,
         data: { title: 'Private Page Layout' },
         children: PRIVATE_ROUTES,
